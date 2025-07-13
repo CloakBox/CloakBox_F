@@ -11,6 +11,10 @@ export const Login = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleSignUpToggle = () => {
+    setSignUp(!signUp);
+  };
+
     return (
         <div className="login">
             <div className="login__content">
@@ -34,7 +38,7 @@ export const Login = () => {
 
                         <div>
                             <span className="login__account login__account--account">Don't Have an Account?</span>
-                            <span className="login__signin login__signin--signup" id="sign-up">Sign Up</span>
+                            <span className="login__signin login__signin--signup" id="sign-up" onClick={handleSignUpToggle}>Sign Up</span>
                         </div>
                     </form>
 
@@ -59,7 +63,7 @@ export const Login = () => {
 
                         <div>
                             <span className="login__account login__account--account">Already have an Account?</span>
-                            <span className="login__signup login__signup--signup" id="sign-in">Sign In</span>
+                            <span className="login__signup login__signup--signup" id="sign-in" onClick={handleSignUpToggle}>Sign In</span>
                         </div>
 
                         <div className="login__social">
