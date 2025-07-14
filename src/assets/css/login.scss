@@ -250,3 +250,11 @@ img.small_icon {
   transform: scale(1.3);
   opacity: 1;
 }
+
+.login__error{
+  text-align: left;
+  color: red;
+  font-weight: 700;
+  padding-left: 7px;
+  padding-top: 5px;
+}
