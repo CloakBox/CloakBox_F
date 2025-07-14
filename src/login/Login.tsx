@@ -5,6 +5,7 @@ import google_icon from '../assets/img/login_icon/google_login_icon.png'
 import kakao_icon from '../assets/img/login_icon/kakao_login_medium.png'
 import naver_icon from '../assets/img/login_icon/naver_login_icon.png'
 import {validEmail} from "../common/valid.ts";
+import * as React from "react";
 
 /**
  * 로그인 화면
@@ -53,7 +54,7 @@ export const Login = () => {
      * 엔터키 이벤트 (로그인)
      * @param e
      */
-    const handleLoginEnter = (e) => {
+    const handleLoginEnter = (e:React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
             onClickSignUp();
             console.log(e)
