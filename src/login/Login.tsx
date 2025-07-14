@@ -10,7 +10,7 @@ import naver_icon from '../assets/img/login_icon/naver_login_icon.png'
  * @constructor
  */
 export const Login = () => {
-    const [signUp, setSignUp] = useState(true)
+
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [step, setStep] = useState<'input' | 'vaild'>('input');
@@ -27,7 +27,6 @@ export const Login = () => {
         const timer = setTimeout(() => setShowText(false), 100); // 약간의 지연 줌
         return () => clearTimeout(timer);
     }
-
 
 
     return (
