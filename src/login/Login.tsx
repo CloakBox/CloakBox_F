@@ -10,7 +10,7 @@ import naver_icon from '../assets/img/login_icon/naver_login_icon.png'
  * @constructor
  */
 export const Login = () => {
-    const [signUp, setSignUp] = useState(true)
+
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [step, setStep] = useState<'input' | 'vaild'>('input');
