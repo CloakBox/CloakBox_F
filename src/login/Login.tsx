@@ -1,5 +1,5 @@
 import {useState} from "react";
-import '../assets/css/Login.scss';
+import '../assets/css/login.scss';
 import cloakbox_logo from '../assets/img/cloakbox_logo_transparent.png'
 import google_icon from '../assets/img/login_icon/google_login_icon.png'
 import kakao_icon from '../assets/img/login_icon/kakao_login_medium.png'
@@ -27,6 +27,8 @@ export const Login = () => {
         const timer = setTimeout(() => setShowText(false), 100); // 약간의 지연 줌
         return () => clearTimeout(timer);
     }
+
+
 
     return (
         <>
