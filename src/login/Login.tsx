@@ -97,7 +97,7 @@ export const Login = () => {
 
             {
                 step == 'first' && (
-                    <FirstJoin setStep={setStep} />
+                    <FirstJoin />
                 )
             }
         </>
