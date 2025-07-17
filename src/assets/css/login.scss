@@ -258,3 +258,15 @@ img.small_icon {
   padding-left: 7px;
   padding-top: 5px;
 }
+
+
+.login_input {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.login__time{
+  color: red;
+  align-content: center;
+}

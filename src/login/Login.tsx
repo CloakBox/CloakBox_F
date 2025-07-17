@@ -8,6 +8,9 @@ import {validEmail} from "../common/valid.ts";
 import * as React from "react";
 import {Valid} from "./Valid.tsx";
 import axios from "axios";
+import {useLoginStore} from "../store/loginStore.ts";
+import dayjs from "dayjs";
+import {FirstJoin} from "./FirstJoin.tsx";
 
 /**
  * 로그인 화면
@@ -21,6 +24,8 @@ export const Login = () => {
     const [errorEmail, setErrorEmail] = useState<string | null>(null);
     /** 로그인 단계 구분용 */
     const [step, setStep] = useState<'input'|'valid'|'first'|'continue'>('input');
+    /** 로그인 관련 store */
+    const {setLimitTime,setPressTime} = useLoginStore();
 
     /**
      * 로그인 버튼 클릭 이벤트
@@ -34,6 +39,8 @@ export const Login = () => {
                 email: userName,
             }).then((res) => {
                if(res.status===200){
+                   setLimitTime(res.data.data.expires_at)
+                   setPressTime(dayjs().toString())
                    setStep('valid');
                }
             })
@@ -85,6 +92,12 @@ export const Login = () => {
             {
                 step == 'valid' && (
                    <Valid userName={userName} setStep={setStep} />
+                )
+            }
+
+            {
+                step == 'first' && (
+                    <FirstJoin setStep={setStep} />
                 )
             }
         </>
