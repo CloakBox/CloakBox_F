@@ -8,6 +8,7 @@ import {useState} from "react";
 export const FirstJoin = () => {
     const [nickName, setNickName] = useState('');
     const [gender, setGender] = useState('M');
+    const [introduce, setIntroduce] = useState('');
 
     const onClickSave = () => {
 
@@ -23,14 +24,18 @@ export const FirstJoin = () => {
                     <form className="login__register" id="login-in" onSubmit={(e) => e.preventDefault()}>
                         <h1 className="login__title">More Information</h1>
                         <div className="login__box">
-                            <div className={`rows`}>
+                            <div className={`info_rows`}>
                                 <label className={'row_title'}>nickName</label>
                                 <input type="text" placeholder="nickName" className="login__input" value={nickName} onChange={(e) => setNickName(e.target.value)}/>
                             </div>
-                            <div className={`rows`}>
+                            <div className={`info_rows`}>
                                 <label className={'row_title'}>gender</label>
                                 <label className={'optionLabel'}>남성</label><input type="radio" value={'M'} checked={gender === "M"}  className="login__input" name={'gender'} onChange={(e) => setGender(e.target.value)}/>
                                 <label className={'optionLabel'}>여성</label><input type="radio" value={'F'} checked={gender === "F"} className="login__input" name={'gender'} onChange={(e) => setGender(e.target.value)}/>
+                            </div>
+                            <div className={`info_rows`}>
+                                <label className={'row_title'}>Self -introduction</label>
+                                <textarea className="login__input" placeholder="Self -introduction" value={introduce} onChange={(e) => setIntroduce(e.target.value)}/>
                             </div>
                         </div>
                         <a className="login__button" onClick={onClickSave}>Save</a>
