@@ -13,9 +13,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: .env settings
-        run: echo "REACT_APP_VITE_API_URL=${{ secrets.REACT_APP_VITE_API_URL }}" > .env
-        
       - name: Build and Restart
         run: |
             cd /home/bin/cloakbox_front
