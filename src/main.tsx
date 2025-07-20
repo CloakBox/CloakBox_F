@@ -3,6 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Login} from "./login/Login.tsx";
+import {GoogleLogin} from "./login/social/googleLogin.tsx";
+import {KakaoLogin} from "./login/social/kakaoLogin.tsx";
+import {NaverLogin} from "./login/social/naverLogin.tsx";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -10,6 +13,10 @@ createRoot(document.getElementById('root')!).render(
           <Routes>
               <Route path="/" element={ <Login />}></Route>
               <Route path="/login" element={ <Login />}></Route>
+              <Route path="/google/callback" element={ <GoogleLogin />}></Route>
+              <Route path="/kakao/callback" element={ <KakaoLogin />}></Route>
+              <Route path="/naver/callback" element={ <NaverLogin />}></Route>
+
           </Routes>
       </BrowserRouter>
   </StrictMode>,
