@@ -1,4 +1,6 @@
 import {create} from "zustand";
+import { persist } from "zustand/middleware";
+
 
 interface LoginStore {
  /** 제한 시간 */
@@ -29,3 +31,24 @@ export const useLoginStore =create<LoginStore>((set) => ({
         pressTime: time,
     }))
 }));
+
+
+interface UserStore {
+    accessToken: string;
+    setAccessToken: (accessToken: string) => void;
+    refreshToken: string;
+    setRefreshToken: (refreshToken: string) => void;
+}
+
+export const useUserStore = create(
+    persist<UserStore>((set) => ({
+            accessToken: "",
+            refreshToken: "",
+            setAccessToken: (value) => set({ accessToken: value }),
+            setRefreshToken: (value) => set({ refreshToken: value})
+        }),
+        {
+            name: "userStorage"
+        }
+    )
+);
