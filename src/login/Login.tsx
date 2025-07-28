@@ -20,7 +20,7 @@ export const Login = () => {
     const [userName, setUserName] = useState('');
     /** 이메일 에러 text */
     const [errorEmail, setErrorEmail] = useState<string | null>(null);
-    /** 로그인 단계 구분용 */
+    /** 로그인 단계 구분용 전역으로 빼야할듯 */
     const [step, setStep] = useState<'input'|'valid'|'first'|'continue'>('input');
     /** 로그인 관련 store */
     const {setLimitTime,setPressTime} = useLoginStore();

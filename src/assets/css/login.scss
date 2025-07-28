@@ -197,11 +197,12 @@ img.small_icon {
   .login{
     height:90vh;
     overflow:hidden;
+    margin: 0 auto;
+    width: 100vw;
     &__content{
       grid-template-columns:repeat(2,max-content);
       justify-content:center;
       align-items:center;
-      margin-left:27rem;
     }
     &__img{
       display:flex;
@@ -269,4 +270,21 @@ img.small_icon {
 .login__time{
   color: red;
   align-content: center;
+}
+
+.info_rows {
+  display: flex;
+}
+
+
+label.row_title {
+  width: 250px;
+  text-align: left;
+  height: 40px;
+  font-weight: 700;
+}
+
+.row_content {
+  width: 90%;
+  text-align: left;
 }

@@ -6,6 +6,7 @@ import {Login} from "./login/Login.tsx";
 import {GoogleLogin} from "./login/social/googleLogin.tsx";
 import {KakaoLogin} from "./login/social/kakaoLogin.tsx";
 import {NaverLogin} from "./login/social/naverLogin.tsx";
+import {FirstJoin} from "./login/FirstJoin.tsx";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -16,7 +17,7 @@ createRoot(document.getElementById('root')!).render(
               <Route path="/google/callback" element={ <GoogleLogin />}></Route>
               <Route path="/kakao/callback" element={ <KakaoLogin />}></Route>
               <Route path="/naver/callback" element={ <NaverLogin />}></Route>
-
+              <Route path="/first" element={ <FirstJoin />}></Route>
           </Routes>
       </BrowserRouter>
   </StrictMode>,

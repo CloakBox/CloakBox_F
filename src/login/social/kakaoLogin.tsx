@@ -8,7 +8,7 @@ import {useUserStore} from "../../store/loginStore.ts";
  */
 export const KakaoLogin = () => {
 
-    const {setAccessToken,setRefreshToken} = useUserStore();
+    const {setAccessToken,setRefreshToken,setLoginType} = useUserStore();
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -21,6 +21,7 @@ export const KakaoLogin = () => {
                 if(res.data.status=='success'){
                     setAccessToken(res.data.data.access_token);
                     setRefreshToken(res.data.data.refresh_token);
+                    setLoginType('kakao');
                 }
             }
         })

@@ -38,17 +38,23 @@ interface UserStore {
     setAccessToken: (accessToken: string) => void;
     refreshToken: string;
     setRefreshToken: (refreshToken: string) => void;
+    loginType:string;
+    setLoginType: (loginType: string) => void;
 }
 
 export const useUserStore = create(
     persist<UserStore>((set) => ({
             accessToken: "",
             refreshToken: "",
+        loginType: "",
             setAccessToken: (value) => set({ accessToken: value }),
-            setRefreshToken: (value) => set({ refreshToken: value})
+            setRefreshToken: (value) => set({ refreshToken: value}),
+            setLoginType: (loginType) => set({ loginType }),
         }),
         {
             name: "userStorage"
         }
     )
 );
+
+export const getAccessToken = () => useUserStore.getState().accessToken;
