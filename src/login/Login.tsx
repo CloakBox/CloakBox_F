@@ -1,9 +1,6 @@
 import {useState} from "react";
 import '../assets/css/login.scss';
 import cloakbox_logo from '../assets/img/cloakbox_logo_transparent.png'
-import google_icon from '../assets/img/login_icon/google_login_icon.png'
-import kakao_icon from '../assets/img/login_icon/kakao_login_medium.png'
-import naver_icon from '../assets/img/login_icon/naver_login_icon.png'
 import {validEmail} from "../common/valid.ts";
 import * as React from "react";
 import {Valid} from "./Valid.tsx";
@@ -11,6 +8,7 @@ import axios from "axios";
 import {useLoginStore} from "../store/loginStore.ts";
 import dayjs from "dayjs";
 import {FirstJoin} from "./FirstJoin.tsx";
+import {EasyLogin} from "./EasyLogin.tsx";
 
 /**
  * 로그인 화면
@@ -22,7 +20,7 @@ export const Login = () => {
     const [userName, setUserName] = useState('');
     /** 이메일 에러 text */
     const [errorEmail, setErrorEmail] = useState<string | null>(null);
-    /** 로그인 단계 구분용 */
+    /** 로그인 단계 구분용 전역으로 빼야할듯 */
     const [step, setStep] = useState<'input'|'valid'|'first'|'continue'>('input');
     /** 로그인 관련 store */
     const {setLimitTime,setPressTime} = useLoginStore();
@@ -77,11 +75,7 @@ export const Login = () => {
                                 </div>
                                 <div className="login__error">{errorEmail}</div>
                                 <a className="login__button" onClick={onClickSignUp}>Sign In</a>
-                                <div className="login_account">
-                                    <a><img className={'small_icon'} src={google_icon}/></a>
-                                    <a><img className={'small_icon'} src={naver_icon}/></a>
-                                    <a><img className={'middle_icon'} src={kakao_icon}/></a>
-                                </div>
+                                <EasyLogin/>
                             </form>
                         </div>
                     </div>
