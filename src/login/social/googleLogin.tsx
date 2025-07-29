@@ -18,22 +18,20 @@ export const GoogleLogin = () => {
                 const urlParams = new URLSearchParams(window.location.search);
                 const authorizationCode = urlParams.get("code");
 
-                const res = await postResponse(`/v1/google/callback`, {
+                const res = await axios.post(`${import.meta.env.VITE_API_URL}/v1/google/callback`, {
                     code: authorizationCode,
                 });
 
-                console.log(res);
-
                 if (res.status === 200 && res.data.status === 'success') {
-                    const accessToken = res.headers['X-Access-Token'];
-                    const refreshToken = res.headers['X-Refresh-Token'];
+                    const accessToken = res.headers['x-access-token'];
+                    const refreshToken = res.headers['x-refresh-token'];
                     setAccessToken(accessToken);
                     setRefreshToken(refreshToken);
                     setLoginType('google');
                     if(res.data.data.is_need_info){
-                        window.location.href = '/main';
-                    }else{
                         window.location.href = '/first';
+                    }else{
+                        window.location.href = '/main';
                     }
                 }
             } catch (error) {

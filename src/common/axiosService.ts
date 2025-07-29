@@ -25,6 +25,7 @@ export const useAxios = () => {
     instance.interceptors.request.use(
         (config: AxiosRequestConfig) => {
             const authToken = getAccessToken();
+            console.log(authToken)
             if (authToken) {
                 const newConfig: AxiosRequestConfig = {...config};
 

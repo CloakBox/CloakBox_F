@@ -2,6 +2,7 @@ import cloakbox_logo from "../assets/img/cloakbox_logo_transparent.png";
 import {useState} from "react";
 import axios from "axios";
 import {useUserStore} from "../store/loginStore.ts";
+import {useAxios} from "../common/axiosService.ts";
 
 /**
  *  첫 로그인 시도시, 추가정보 입력하는 창
@@ -11,17 +12,16 @@ export const FirstJoin = () => {
     const [nickName, setNickName] = useState('');
     const [gender, setGender] = useState('M');
     const [introduce, setIntroduce] = useState('');
-    const {setAccessToken,setRefreshToken} = useUserStore();
+    const {postResponse} = useAxios();
 
     const onClickSave = () => {
-        axios.post(`${import.meta.env.VITE_API_URL}/v1/user/register`, {
+        postResponse(`/v1/user/profile`, {
             nickname: nickName,
             bio:introduce,
-            gender: gender=='M'?'MAN':"WOMAN",
+            // gender: gender=='M'?'MAN':"WOMAN",
         }).then((res) => {
             if(res.status===200){
-                setAccessToken(res.data.data.access_token);
-                setRefreshToken(res.data.data.refresh_token);
+               location.href='/main'
             }
         })
     }

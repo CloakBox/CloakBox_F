@@ -1,7 +1,7 @@
 import cloakbox_logo from "../assets/img/cloakbox_logo_transparent.png";
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {useLoginStore} from "../store/loginStore.ts";
+import {useLoginStore, useUserStore} from "../store/loginStore.ts";
 import dayjs from "dayjs";
 
 interface ValidProps {
@@ -19,6 +19,7 @@ export const Valid =({setStep,userName}:ValidProps) =>{
 
     /** 로그인 관련 store */
     const{limitTime:limitTimeStore,pressTime,setPressTime,setLimitTime:setLimitTimeStore} = useLoginStore();
+    const {setAccessToken, setRefreshToken, setLoginType} = useUserStore();
 
     useEffect(() => {
         const timer = setTimeout(() => setShowText(true), 100); // 약간의 지연 줌
@@ -32,11 +33,15 @@ export const Valid =({setStep,userName}:ValidProps) =>{
             email: userName,
             code: code,
         }).then((res) => {
+            const accessToken = res.headers['x-access-token'];
+            const refreshToken = res.headers['x-refresh-token'];
+            setAccessToken(accessToken);
+            setRefreshToken(refreshToken);
             if(res.data.data.verified===true){
                 if(res.data.data.user_exists===true){
-                    setStep('continue');
+                    location.href='/main';
                 }else{
-                    setStep('first');
+                    location.href='/first';
                 }
             }
         })
@@ -51,6 +56,10 @@ export const Valid =({setStep,userName}:ValidProps) =>{
                 email: userName,
             }).then((res) => {
                 if(res.status===200){
+                    const accessToken = res.headers['x-access-token'];
+                    const refreshToken = res.headers['x-refresh-token'];
+                    setAccessToken(accessToken);
+                    setRefreshToken(refreshToken);
                     setLimitTimeStore(res.data.data.expires_at)
                     setPressTime(dayjs().toString())
                     alert('재발급 되었습니다.');
