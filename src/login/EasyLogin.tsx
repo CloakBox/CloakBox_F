@@ -14,6 +14,7 @@ export const EasyLogin = () => {
 
     /** google 간편로그인 클릭 이벤트 */
     const onClickGoogle = () => {
+        console.log(`${import.meta.env.VITE_API_URL}`);
         console.log("clicked");
         axios.post(`${import.meta.env.VITE_API_URL}/v1/google/auth`, {
             "scope": "email profile",
@@ -30,6 +31,7 @@ export const EasyLogin = () => {
 
     /** 네이버 간편로그인 클릭 이벤트 */
     const onClickNaver = () => {
+        console.log(`${import.meta.env.VITE_API_URL}`);
         axios.post(`${import.meta.env.VITE_API_URL}/v1/naver/auth`, {
             "state": "random_state_string",
             "scope": "profile,email"
@@ -46,7 +48,7 @@ export const EasyLogin = () => {
 
     /** 카카오 간편로그인 클릭 이벤트 */
     const onClickKakao = () => {
-        console.log("clicked");
+        console.log(`${import.meta.env.VITE_API_URL}`);
         axios.post(`${import.meta.env.VITE_API_URL}/v1/kakao/auth`, {
             "scope": "account_email,profile_nickname",
             "prompt": "consent,login"
