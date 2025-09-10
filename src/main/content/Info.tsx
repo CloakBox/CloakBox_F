@@ -2,7 +2,8 @@ import {useEffect,useState} from "react";
 import ReactMarkdown from "react-markdown";
 
 /**
- * 초기 화면 ReadMe를 처음에 띄우고 초기 게시글 보여주는 화면?
+ * 처음 공지 보여주는 popup 같은 화면
+ * 내용은 md 파일 읽어서 표출
  * @constructor
  */
 export const Info =() => {

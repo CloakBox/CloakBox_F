@@ -1,3 +1,7 @@
+/**
+ * 작성한 컨텐츠 보여주는 box
+ * @constructor
+ */
 export const ViewBox = () => {
 
     return (
