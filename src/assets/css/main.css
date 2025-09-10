@@ -71,3 +71,29 @@
 body{
     font-family: 'Pretendard';
 }
+
+.main_content {
+    padding-top: 250px;
+    /*display: flex;*/
+    width: 100%;
+}
+
+.viewbox_content{
+    width: 330px;
+    height: 420px;
+    background: pink;
+    padding-top: 250px;
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.viewbox_title{
+    font-size: 30px;
+    padding-bottom: 10px;
+}
+
+.slick-prev:before, .slick-next:before{
+    color: black !important;
+}
